@@ -10,30 +10,26 @@ Works anywhere on the chain (it controls devices by ID, not by position).
 
 ## Requirements
 
-- Ableton Live 10/11/12 **Suite**, or Live Standard + Max for Live add-on.
+- **Ableton Live Suite** (10/11/12) — includes Max for Live. Or Live Standard + Max for Live add-on.
 - macOS or Windows.
 
-## Install — easy path (if `AutoBypass AB.amxd` is in the repo)
+## Install (one-time build — ~1 minute)
 
-1. Download `AutoBypass AB.amxd`.
-2. Drop it into `~/Music/Ableton/User Library/Presets/Audio Effects/Max Audio Effect/` (or anywhere in your User Library).
-3. In Ableton, find it in the browser and drag onto any audio track.
+This repo ships the source (`.maxpat` + `.js`). You'll turn it into a usable `.amxd` inside Live the first time. Heads up: the author shipped this without a Max install so **you're the first test** — if something looks off, see "What to send back" below.
 
-## Install — from source (`.maxpat` + `.js`)
-
-Use this path if you want to edit the device or the `.amxd` isn't in the repo yet.
-
-1. `git clone` this repo (or download ZIP).
-2. In Ableton, drag a **Max Audio Effect** onto an audio track.
+1. `git clone https://github.com/sahilmodi1965/autobypass-ab.git` (or download the ZIP and unzip somewhere stable — don't move the folder later).
+2. In Ableton, drag a **Max Audio Effect** onto any audio track.
 3. Click the **edit (✎)** button on the device — Max opens an empty device window.
-4. In Max: **File → Open…** and pick `AutoBypassAB.maxpat`.
+4. In Max: **File → Open…** and pick `AutoBypassAB.maxpat` from the cloned folder.
 5. **Cmd-A** then **Cmd-C** to copy all objects.
-6. Switch to the empty device window, select the default `plugin~` and `plugout~`, **delete** them.
+6. Switch back to the empty device window, click inside the patcher, select the default `plugin~` and `plugout~` boxes (if present), delete them.
 7. **Cmd-V** to paste.
-8. Click the **Freeze** button (snowflake icon in the Max toolbar). This embeds `ab_bypass.js` inside the device so you can move it around without losing the script.
-9. **File → Save** and name it `AutoBypass AB.amxd`.
+8. Click the **Freeze** button (snowflake icon, top of the Max toolbar). This embeds `ab_bypass.js` into the device so it travels with the `.amxd`.
+9. **File → Save** → name it `AutoBypass AB.amxd` → save to `~/Music/Ableton/User Library/Presets/Audio Effects/Max Audio Effect/` so it shows up in the Live browser permanently.
 
-> If after step 8 the Max Console shows `js: ab_bypass.js: no such file`, the `.js` isn't on Max's search path. Put `ab_bypass.js` next to the `.maxpat` before opening, or add its folder via **Options → File Preferences → search paths**.
+After this, you just drag **AutoBypass AB** from the Live browser like any other device.
+
+> If the Max Console (**Window → Max Console**) shows `js: ab_bypass.js: no such file` before you freeze, `ab_bypass.js` isn't on Max's search path. Fix: keep `ab_bypass.js` in the same folder as `AutoBypassAB.maxpat` when you do step 4.
 
 ---
 
@@ -81,4 +77,3 @@ Use this path if you want to edit the device or the `.amxd` isn't in the repo ye
 
 - `AutoBypassAB.maxpat` — the Max patcher (UI + wiring).
 - `ab_bypass.js` — all the Live API logic (scan, toggle, selection state).
-- `AutoBypass AB.amxd` — frozen, drag-and-drop device *(only present if Sahil committed a build)*.
