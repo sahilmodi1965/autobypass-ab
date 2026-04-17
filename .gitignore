@@ -1,0 +1,9 @@
+.DS_Store
+*.swp
+.vscode/
+# Max autosaves
+*.maxpat~
+# Ableton project crumbs if you test inside the repo
+Backup/
+*.als
+*.alp
